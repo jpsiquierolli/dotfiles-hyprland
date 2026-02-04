@@ -1,0 +1,123 @@
+/* macOS default dark colours */
+@define-color bg_apple rgba(30, 30, 30, 0.6); 
+@define-color fg_apple #f8f8f2;
+@define-color border_apple rgba(255, 255, 255, 0.1);
+
+/* Dracula Colors for Alerts */
+@define-color red    #ff5555;
+@define-color orange #ffb86c;
+@define-color green  #50fa7b;
+
+* {
+    border: none;
+    border-radius: 0;
+    font-family: "SF Pro Display", "JetBrainsMono Nerd Font", sans-serif;
+    font-size: 13px;
+    font-weight: 500;
+}
+
+window#waybar {
+    background-color: @bg_apple;
+    color: @fg_apple;
+    border-bottom: 1px solid @border_apple;
+}
+
+/* Worspace pill style */
+#workspaces {
+    background: rgba(255, 255, 255, 0.08);
+    margin: 5px 4px;
+    border-radius: 8px;
+    padding: 0 4px;
+}
+
+#workspaces button {
+    padding: 0 10px;
+    color: @fg_apple;
+    border-radius: 6px;
+    transition: all 0.2s ease-in-out;
+}
+
+#workspaces button.active {
+    background: rgba(255, 255, 255, 0.15);
+    color: #ffffff;
+    box-shadow: 0 1px 2px rgba(0,0,0,0.2);
+}
+
+#workspaces button:hover {
+    background: rgba(255, 255, 255, 0.1);
+}
+
+/* Defaults */
+#clock, #custom-khorshididate, #custom-weather, #wlr-taskbar, 
+#cpu, #memory, #battery, #pulseaudio, #network, #tray, 
+#temperature, #power-profiles-daemon, #custom-twingate, 
+#custom-alexa, #custom-notification {
+    padding: 0 12px;
+    margin: 0;
+}
+
+/* Clock Font */
+#clock {
+    font-weight: 700;
+}
+
+/* Battery alert */
+#battery.warning { color: @orange; }
+#battery.critical { color: @red; }
+#battery.charging { color: @green; }
+
+/* Tooltips */
+tooltip {
+    background: rgba(40, 42, 54, 0.95);
+    border-radius: 10px;
+    border: 1px solid @border_apple;
+}
+
+tooltip label {
+    padding: 8px;
+    color: @fg_apple;
+}
+
+/* Taskbar icons */
+#wlr-taskbar button {
+    border-radius: 6px;
+    margin: 0 2px;
+}
+
+#wlr-taskbar button.active {
+    background: rgba(255, 255, 255, 0.1);
+}
+
+#custom-remmina {
+    font-size: 24px;       
+    color: #00a4ef;        
+    padding-left: 10px;
+    padding-right: 10px;
+    margin-left: 5px;
+    margin-right: 5px;
+    background-color: transparent;
+}
+
+/* Clickable effect */
+#custom-remmina:hover {
+    color: #ffffff;
+    background-color: rgba(255, 255, 255, 0.1);
+    border-radius: 8px;
+}
+
+/* Remmina workspace blue windows icon */
+#workspaces button.9 {
+    font-size: 18px; 
+}
+
+#custom-remmina {
+    font-size: 24px;
+    color: #00a4ef;
+    background-color: transparent;
+}
+
+#custom-power-menu {
+    color: #ff5e57; 
+    padding: 0 10px;
+    font-size: 18px;
+}

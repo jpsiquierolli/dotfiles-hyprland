@@ -1,0 +1,242 @@
+{
+    "layer": "top",
+    "position": "top",
+    "mod": "dock",
+    "exclusive": true,
+    "passthrough": false,
+    "gtk-layer-shell": true,
+    "height": 38, /* Slightly taller bar for the 'Tahoe' feel */
+    "margin-right": 12, /* Increased margin */
+    "margin-left": 12,  /* Increased margin */
+
+    "modules-left": [
+	"clock",    
+        "custom/khorshididate",
+	"custom/weather",
+        "wlr/taskbar",
+	"power-profiles-daemon",
+	"custom/twingate"
+    ],
+
+    "modules-center": [
+        "hyprland/workspaces" /* Centered for main context switching */
+    ],
+
+    "modules-right": [
+        "tray",
+	"custom/alexa",
+        "network",
+        "pulseaudio",
+        "battery",
+        "battery#mouse_wireless",
+	"battery#mouse_wired",
+	"temperature",
+        "cpu",
+        "memory",
+        "custom/notification"
+    ],
+
+    "custom/power": {
+        "format": "",
+        "on-click": "sysact",
+        "tooltip": false
+    },
+
+    "hyprland/workspaces": {
+        "on-click": "activate",
+        "disable-scroll": true,
+        "all-outputs": true,
+        "show-special": true
+    },
+
+    "wlr/taskbar": {
+        "format": "{icon}",
+        "icon-size": 12,
+        "all-outputs": true,
+        "tooltip-format": "{name}: {title}",
+        "on-click": "activate",
+        "on-click-middle": "close",
+        "ignore-list": [
+            "rofi"
+         ]
+    },
+
+    "tray": {
+        "icon-size": 14, /* Slightly larger tray icons */
+        "spacing": 8
+    },
+
+    "cpu": {
+        "interval": 10,
+        "format": " {usage}%",
+        "max-length": 10,
+        "format-alt-click": "click-right",
+        "format-alt": " {usage}%"
+    },
+
+    "memory": {
+        "interval": 30,
+        "format": "󰐟 {used:0.1f} GB",
+        "format-alt-click": "click-right",
+        "format-alt": "󰐟 {}%",
+        "max-length": 10,
+        "tooltip": true,
+        "tooltip-format": "Memory - {used:0.1f}GB used"
+    },
+
+    "temperature": {
+        "hwmon-path": "/sys/class/hwmon/hwmon3/temp1_input",
+        "critical-threshold": 80,
+        "format": "{icon} {temperatureC}°C",
+        "format-icons": [
+            "",
+            "",
+            ""
+        ]
+    },
+
+
+   "battery": {
+        "states": {
+            "good": 95,
+            "warning": 30,
+            "critical": 20
+        },
+        "format": "{icon} {capacity}%",
+        "format-charging": " {capacity}%", // Fa6 lightning bolt icon for charging
+        "format-plugged": " {capacity}%", // Fa6 plug icon for plugged
+        "format-alt-click": "click-right",
+        "format-alt": "{icon} {capacity}%",
+        "format-icons": [
+            "",    // 0-25% (fa6 battery-empty)
+            "",    // 25-50% (fa6 battery-quarter)
+            "",    // 50-75% (fa6 battery-half)
+            "",    // 75-95% (fa6 battery-three-quarters)
+            ""     // 95-100% (fa6 battery-full)
+        ]
+    },
+
+    "pulseaudio": {
+        "format": "{icon} {volume}%",
+        "format-muted": " ",
+        "on-click": "pavucontrol",
+        "on-scroll-up": "wpctl set-volume -l 1 @DEFAULT_AUDIO_SINK@ 5%+",
+        "on-scroll-down": "wpctl set-volume -l 1 @DEFAULT_AUDIO_SINK@ 5%-",
+        "scroll-step": 5,
+        "format-icons": {
+            "headset": "󰋋 ",
+            "default": ["", "󰖀", "󰕾"]
+        },
+        "tooltip": true,
+        "tooltip-format": "{icon} at {volume}%"
+    },
+
+    "custom/weather": {
+        "tooltip" : true,
+        "format" : "{}",
+        "interval" : 3600,
+        "exec" : "~/.config/waybar/scripts/wttr.py",
+        "return-type" : "json"
+    },
+
+    "network": {
+        "format": "{ifname}",
+        "format-wifi": "  {essid}",
+        "format-ethernet": " ",
+        "on-click": "kitty -e nmtui connect",        
+        "format-disconnected": " ",
+        "tooltip-format": " {ifname} via {gwaddr}",
+        "tooltip-format-wifi": " {essid} ({signalStrength}%)",
+        "tooltip-format-ethernet": " {ifname} {ipaddr}/{cidr}",
+        "tooltip-format-disconnected": "Disconnected",
+        "max-length": 50
+    },
+
+    "clock": {
+        "timezone": "America/Sao_Paulo",
+        "format": "{:%H:%M}", 
+        "tooltip": true,
+        "tooltip-format": "{:%A, %B %d %Y}"
+    },
+
+    "custom/khorshididate": { 
+        "tooltip" : true,
+        "format": " {alt}",
+        "format-alt": " {alt}",
+        "format-alt-click": "click-right",
+        "interval": 3600,
+        "exec": "~/.config/waybar/scripts/khorshidi-date",
+        "return-type" : "json"
+    },
+    
+    "power-profiles-daemon": {
+        "format": "{icon}",
+        "on-click": "~/.config/waybar/scripts/cycle_power.sh",
+        "tooltip-format": "Perfil de Energia: {profile}",
+        "format-icons": {
+            "power-saver": "power-save",
+            "balanced": "balanced",
+            "performance": "performance"
+        }
+    },
+
+      "custom/notification": {
+    "tooltip": true,
+    "format": "<span size='16pt'>{icon}</span>",
+    "format-icons": {
+      "notification": "󱅫",
+      "none": "󰂜",
+      "dnd-notification": "󰂠",
+      "dnd-none": "󰪓",
+      "inhibited-notification": "󰂛",
+      "inhibited-none": "󰪑",
+      "dnd-inhibited-notification": "󰂛",
+      "dnd-inhibited-none": "󰪑"
+    },
+    "return-type": "json",
+    "exec-if": "which swaync-client",
+    "exec": "swaync-client -swb",
+    "on-click": "swaync-client -t -sw",
+    "on-click-right": "swaync-client -d -sw",
+    "escape": true
+  },
+
+
+    "battery#mouse_wired": {
+        "bat": "hidpp_battery_1",
+        "interval": 60,
+        "format": "󰍽 {capacity}%",
+        "format-icons": ["", "", "", "", ""],
+        "states": { "warning": 30, "critical": 10 }
+    },
+
+    "battery#mouse_wireless": {
+        "bat": "hidpp_battery_2",
+        "interval": 60,
+        "format": "󰍽 {capacity}%",
+        "format-icons": ["", "", "", "", ""],
+        "states": { "warning": 30, "critical": 10 }
+    },
+
+    "custom/twingate": {
+        "format": "{icon}",
+        "return-type": "json",
+        "interval": 5,
+        "exec": "~/.config/waybar/scripts/twingate_status.py",
+        "on-click": "~/.config/waybar/scripts/twingate_toggle.sh",
+        "format-icons": {
+            "connected": "on",
+            "disconnected": "off"
+        },
+        "tooltip": true
+    },
+
+    "custom/alexa": {
+        "format": "󰓃",
+        "return-type": "json",
+        "interval": 5,
+        "on-click": "bluetoothctl connect 1C:FE:2B:D3:F5:5E",
+        "tooltip": true
+    }
+
+}

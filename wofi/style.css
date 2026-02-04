@@ -1,0 +1,56 @@
+window {
+    /* Main Window Frame (Opaque, Light Background) */
+    margin: 0px;
+    border: 0px; 
+    border-radius: 18px; 
+    /* High opacity (0.70) light background - almost solid white */
+    background-color: rgba(240, 240, 240, 0.70); 
+}
+
+#input {
+    /* Search Bar (Opaque, White Background) */
+    margin: 12px; 
+    padding: 8px;
+    border: none;
+    border-radius: 12px; 
+    color: #1c1c1c; /* Dark text */
+    /* Fully opaque white background for best visibility */
+    background-color: rgba(255, 255, 255, 1.0); 
+    font-size: 14pt;
+}
+
+#entry {
+    /* Single Entry Item */
+    padding: 8px 15px;
+    border-radius: 10px; 
+    background-color: transparent;
+}
+
+#text {
+    /* Default Text/Entry Text */
+    margin: 2px;
+    padding: 2px;
+    border: none;
+    color: #1c1c1c; /* Dark text */
+} 
+
+#entry:selected {
+    /* Selected Entry (Opaque, Light Gray Selection) */
+    /* Very clear, light gray selection background */
+    background-color: rgba(224, 224, 224, 1.0); 
+    border: none;
+}
+
+#entry:selected #text {
+    /* Text on Selected Entry */
+    font-weight: bold;
+    color: #1c1c1c; /* Dark text when selected */
+}
+
+/* Containers remain transparent */
+#inner-box, #outer-box, #scroll {
+    margin: 0px;
+    padding: 0px;
+    border: none;
+    background-color: transparent;
+}

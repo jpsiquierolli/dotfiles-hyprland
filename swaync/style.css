@@ -1,0 +1,161 @@
+:root {
+  --cc-bg: rgba(35, 35, 35, 0.9);
+  --noti-border-color: rgba(255, 255, 255, 0.15);
+  --noti-bg: 40, 40, 40;
+  --noti-bg-alpha: 0.85;
+  --noti-bg-darker: rgb(30, 30, 30);
+  --noti-bg-hover: rgb(60, 60, 60);
+  --noti-bg-focus: rgba(80, 80, 80, 0.6);
+  --noti-close-bg: rgba(255, 255, 255, 0.1);
+  --noti-close-bg-hover: rgba(255, 255, 255, 0.2);
+  --text-color: rgb(255, 255, 255);
+  --text-color-disabled: rgb(160, 160, 160);
+  --bg-selected: rgb(0, 120, 215);
+  --notification-icon-size: 54px;
+  --notification-app-icon-size: 20px;
+  --notification-group-icon-size: 28px;
+  --border: 1px solid var(--noti-border-color);
+  --border-radius: 18px;
+  --notification-shadow: 0 4px 12px rgba(0, 0, 0, 0.4);
+  --font-size-body: 13px;
+  --font-size-summary: 15px;
+  --hover-tranistion: background 0.2s ease-in-out;
+  --group-collapse-tranistion: opacity 400ms ease-in-out;
+  --hover-transition: var(--hover-tranistion);
+  --group-collapse-transition: var(--group-collapse-tranistion);
+}
+
+@define-color cc-bg rgba(35, 35, 35, 0.9);
+@define-color noti-border-color rgba(255, 255, 255, 0.15);
+@define-color noti-bg rgba(40, 40, 40, 0.85);
+@define-color noti-bg-opaque rgb(40, 40, 40);
+@define-color noti-bg-darker rgb(30, 30, 30);
+@define-color noti-bg-hover rgb(60, 60, 60);
+@define-color noti-bg-hover-opaque rgb(60, 60, 60);
+@define-color noti-bg-focus rgba(80, 80, 80, 0.6);
+@define-color noti-close-bg rgba(255, 255, 255, 0.1);
+@define-color noti-close-bg-hover rgba(255, 255, 255, 0.15);
+@define-color text-color rgb(255, 255, 255);
+@define-color text-color-disabled rgb(160, 160, 160);
+@define-color bg-selected rgb(0, 120, 215);
+
+notificationwindow, blankwindow {
+  background: transparent;
+}
+
+.close-button {
+  background: var(--noti-close-bg);
+  color: var(--text-color);
+  text-shadow: none;
+  padding: 0;
+  border-radius: 100%;
+  margin-top: 10px;
+  margin-right: 10px;
+  box-shadow: none;
+  border: none;
+  min-width: 22px;
+  min-height: 22px;
+}
+
+.close-button:hover {
+  box-shadow: none;
+  background: var(--noti-close-bg-hover);
+  transition: var(--hover-tranistion);
+  border: none;
+}
+
+.notification-row {
+  background: none;
+  outline: none;
+}
+
+.notification-row:focus {
+  background: var(--noti-bg-focus);
+}
+
+.notification-row .notification-background {
+  padding: 8px 12px;
+}
+
+.notification-row .notification-background .notification {
+  border-radius: var(--border-radius);
+  border: var(--border);
+  padding: 0;
+  transition: var(--hover-tranistion);
+  background: rgba(var(--noti-bg), var(--noti-bg-alpha));
+  max-width: 350px;
+  box-shadow: var(--notification-shadow);
+}
+
+.notification-row .notification-background .notification .notification-default-action {
+  padding: 12px;
+  margin: 0;
+  box-shadow: none;
+  background: transparent;
+  border: none;
+  color: var(--text-color);
+  transition: var(--hover-tranistion);
+  border-radius: var(--border-radius);
+  max-height: 110px;
+  overflow: hidden;
+}
+
+.notification-row .notification-background .notification .notification-default-action:hover {
+  -gtk-icon-filter: none;
+  background: var(--noti-bg-hover);
+}
+
+.notification-row .notification-background .notification .notification-default-action .notification-content {
+  background: transparent;
+  border-radius: var(--border-radius);
+  padding: 0;
+}
+
+.notification-row .notification-background .notification .notification-default-action .notification-content .image {
+  -gtk-icon-filter: none;
+  -gtk-icon-size: var(--notification-icon-size);
+  border-radius: 12px;
+  margin: 4px 12px 4px 4px;
+}
+
+.notification-row .notification-background .notification .notification-default-action .notification-content .text-box .summary {
+  font-size: var(--font-size-summary);
+  font-weight: 600;
+  background: transparent;
+  color: var(--text-color);
+  text-shadow: none;
+}
+
+.notification-row .notification-background .notification .notification-default-action .notification-content .text-box .body {
+  font-size: var(--font-size-body);
+  font-weight: 400;
+  background: transparent;
+  color: rgba(255, 255, 255, 0.85);
+  text-shadow: none;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+.notification-row .notification-background .notification .notification-alt-actions {
+  background: rgba(255, 255, 255, 0.05);
+  border-bottom-left-radius: var(--border-radius);
+  border-bottom-right-radius: var(--border-radius);
+  padding: 4px;
+}
+
+.control-center {
+  background: var(--cc-bg);
+  color: var(--text-color);
+  border-radius: var(--border-radius);
+}
+
+.widget-title > label {
+  font-size: 1.2rem;
+  font-weight: bold;
+}
+
+.widget-dnd switch {
+  border-radius: 20px;
+}

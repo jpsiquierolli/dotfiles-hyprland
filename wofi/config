@@ -1,0 +1,14 @@
+# Translating Rofi options to Wofi options
+mode=drun
+width=40%
+height=45%
+allow_images=true
+# Wofi's default term config is often term=TERM_ENV_VAR or similar. 
+# We'll set the terminal here as you did in the rofi config:
+term=kitty
+prompt=Search...
+# halign=center & valign=center are handled by the 'anchor' setting.
+anchor=center
+hide_scroll=true
+# Wofi handles markup by default.
+# exec_search and show_actions are default Wofi behavior in drun mode.

@@ -1,0 +1,265 @@
+{
+    "layer": "top",
+    "position": "top",
+    "mod": "dock",
+    "exclusive": true,
+    "passthrough": false,
+    "gtk-layer-shell": true,
+    "height": 36,
+    "margin-right": 5,
+    "margin-left": 5, 
+
+    "modules-left": [
+//        "custom/rofi",
+        "custom/weather",
+        "custom/khorshididate",
+	"clock",
+        "wlr/taskbar",
+	"power-profiles-daemon",
+    ],
+
+    "modules-center": [
+        "hyprland/workspaces",
+    ],
+
+    "modules-right": [
+        "tray",
+        "battery",
+        "pulseaudio",
+        "pulseaudio#microphone",
+//        "backlight",
+        "cpu",
+        "memory",
+//        "disk",
+        "temperature",
+//        "custom/updates",
+        "network"
+//        "hyprland/language",
+//        "custom/lock_screen",
+//        "custom/power"
+    ],
+
+    "custom/power": {
+        "format": "",
+        "on-click": "sysact",
+        "tooltip": false
+    },
+
+/*
+    "custom/lock_screen": {
+        "format": "",
+        "on-click": "sh -c '(sleep 0.5s; swaylock -eFfki ~/Pictures/lockscreen.png)' & disown",
+        "tooltip": false
+    },
+*/
+    "hyprland/workspaces": {
+        "on-click": "activate",
+        "disable-scroll": true,
+        "all-outputs": true,
+        "show-special": true,
+//        "persistent-workspaces": {
+//            "*": [ 1, 2, 3, 4 ],
+//        },
+    },
+
+    "wlr/taskbar": {
+        "format": "{icon}",
+        "icon-size": 12,
+        "all-outputs": true,
+        "tooltip-format": "{name}: {title}",
+        "on-click": "activate",
+        "on-click-middle": "close",
+        "ignore-list": [
+            "rofi"
+         ]
+    },
+
+    "tray": {
+        "icon-size": 12,
+        "spacing": 10
+    },
+
+    "cpu": {
+        "interval": 10,
+        "format": " {usage}%",
+        "max-length": 10,
+        "format-alt-click": "click-right",
+        "format-alt": " {usage}%",
+    },
+
+    "memory": {
+        "interval": 30,
+        "format": "󰐟 {used:0.1f} GB",
+        "format-alt-click": "click-right",
+        "format-alt": "󰐟 {}%",
+        "max-length": 10,
+        "tooltip": true,
+        "tooltip-format": "Memory - {used:0.1f}GB used",
+    },
+/*    
+    "disk": {
+        "interval": 600,
+        "format": "󰋊",
+        "path": "/",
+        "format-alt-click": "click-right",
+        "format-alt": "󰋊 {percentage_used}%",
+        "tooltip": true,
+        "tooltip-format": "HDD - {used} used out of {total} on {path} ({percentage_used}%)",
+        "states": {
+            "warning": 85,
+            "critical": 90,
+        },
+    },
+*/
+
+    "temperature": {
+//    "rotate": 90,
+    "hwmon-path": "/sys/class/hwmon/hwmon3/temp1_input",
+    "critical-threshold": 80,
+    "format": "{icon} {temperatureC}°C",
+    "format-icons": [
+      "",
+      "",
+      ""
+    ]
+  },
+
+
+    "battery": {
+        "states": {
+            "good": 95,
+            "warning": 30,
+            "critical": 20
+        },
+        "format": "{icon} {capacity}%",
+	//"format": "{capacity}%,
+        "format-charging": " {capacity}%",
+        "format-plugged": " {capacity}%",
+        "format-alt-click": "click-right",
+        "format-alt": "{icon} {capacity}%",
+        "states": {
+            "warning": 20,
+            "critical": 10
+        },
+        "format-icons": ["󰂎", "󰁺", "󰁻", "󰁼", "󰁽", "󰁾", "󰁿", "󰂀", "󰂁", "󰂂", "󰁹"]
+    },
+
+
+    "pulseaudio": {
+        "format": "{icon} {volume}%",
+        "format-muted": " ", // fa-volume-xmark
+	"on-click": "pavucontrol",
+	"on-scroll-up": "wpctl set-volume -l 1 @DEFAULT_AUDIO_SINK@ 5%+",
+        "on-scroll-down": "wpctl set-volume -l 1 @DEFAULT_AUDIO_SINK@ 5%-",
+        "scroll-step": 5,
+        "format-icons": {
+            "headphone": "󰋋 ", // fa-headphones
+            "hands-free": "󰋋 ", // fa-headphones
+            "headset": "󰋋 ", // fa-headphones
+            "phone": "", // fa-phone
+            "portable": "", // fa-phone
+            "car": "", // fa-car
+            // Volume: Off, Low, High
+            "default": ["", "󰖀", "󰕾"]
+        },
+        "tooltip": true,
+        "tooltip-format": "{icon} at {volume}%"
+    },
+
+    "pulseaudio#microphone": {
+        "format": "{format_source} {volume}%",
+        "format-source": "󰍬",
+        "format-source-muted": "",
+	"on-click": "wpctl set-mute @DEFAULT_AUDIO_SOURCE@ toggle",
+	"on-scroll-up": "wpctl set-volume -l 1 @DEFAULT_AUDIO_SOURCE@ 5%+",
+        "on-scroll-down": "wpctl set-volume -l 1 @DEFAULT_AUDIO_SOURCE@ 5%-",
+        "scroll-step": 5,
+        "tooltip": true,
+        "tooltip-format": " at {volume}%"
+    },
+/*
+    "backlight": {
+        "device": "intel_backlight",
+        "format": "{icon}",
+        "format-alt-click": "click-right",
+        "format-alt": "{icon} {percent}%",
+        "format-icons": ["󰃞", "󰃟", "󰃠"],
+        "on-scroll-up": "incbrightness",
+        "on-scroll-down": "decbrightness"
+    },
+*/
+    "custom/weather": {
+        //shows the current weather and forecast
+        "tooltip" : true,
+        "format" : "{}",
+        "interval" : 3600,
+        "exec" : "~/.config/waybar/scripts/wttr.py",
+        "return-type" : "json"
+    },
+
+
+/*
+    "custom/updates": {
+        "format": "{}",
+        "exec": "/home/jpsiquierolli/.config/waybar/scripts/update-sys",
+        "on-click": "/home/jpsiquierolli/.config/waybar/scripts/update-sys update",
+        "interval": 3600,
+        "tooltip": true,
+        "signal": 8,
+        "return-type" : "json"
+    },
+*/
+
+    "network": {
+        "format": "{ifname}",
+        "format-wifi": "  {essid}",
+        "format-ethernet": " ",
+	"on-click": "kitty -e nmtui connect",        
+	"format-disconnected": " ", //An empty format will hide the module.
+        "tooltip-format": " {ifname} via {gwaddr}",
+        "tooltip-format-wifi": " {essid} ({signalStrength}%)",
+        "tooltip-format-ethernet": " {ifname} {ipaddr}/{cidr}",
+        "tooltip-format-disconnected": "Disconnected",
+        "max-length": 50
+    },
+
+    "clock": {
+        "timezone": "America/Sao_Paulo",
+        "format": "{:%Y-%m-%d %H:%M}",
+        "tooltip": true,
+        "tooltip-format": "{:%A, %B %d %Y}"
+    },
+
+    "custom/khorshididate": { 
+        "tooltip" : true,
+        "format": "{}",
+        "format-alt": "{alt}",
+        "format-alt-click": "click-right",
+        "interval": 3600,
+        "exec": "~/.config/waybar/scripts/khorshidi-date",
+        "return-type" : "json"
+    },
+
+    "power-profiles-daemon": {
+    // "format": "{icon} {profile}", // Opção 1: Mostra ícone e texto
+    "format": "{profile}",      // Opção 2: Mostra apenas o texto (ex: "power-saver")
+    // "format": "{icon}",         // Opção 3: Mostra apenas o ícone
+    
+    "on-click": "~/.config/waybar/scripts/cycle_power.sh",
+
+    "tooltip-format": "Perfil de Energia: {profile}",
+    "format-icons": {
+        "power-saver": "🍃",
+        "balanced": "⚖️",
+        "performance": "⚡️"
+    }
+    }
+/*
+   "hyprland/language": {
+        "format": "{}",
+        "on-click": "hyprctl switchxkblayout at-translated-set-2-keyboard next",
+        "format-br": "BR",
+        "format-en": "EN"
+   },
+*/
+}

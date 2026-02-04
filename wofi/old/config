@@ -1,0 +1,14 @@
+mode=drun
+allow_images=true
+allow_markup=true
+image_size=32
+width=40%
+height=45%
+halign=center
+valign=center
+prompt=Search...
+show_actions=true
+term=kitty
+hide_scroll=true
+line_wrap=word
+exec_search=true
