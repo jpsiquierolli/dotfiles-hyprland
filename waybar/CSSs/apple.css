@@ -1,0 +1,77 @@
+@define-color bg_apple rgba(26, 26, 26, 0.7);
+@define-color fg_apple #ffffff;
+@define-color border_apple rgba(255, 255, 255, 0.1);
+
+* {
+    border: none;
+    border-radius: 0;
+    font-family: "SF Pro Display", "Inter", "JetBrainsMono Nerd Font", sans-serif;
+    font-size: 13px;
+    font-weight: 500;
+}
+
+window#waybar {
+    background-color: @bg_apple;
+    color: @fg_apple;
+    border-bottom: 1px solid @border_apple;
+}
+
+#custom-apple {
+    font-size: 16px;
+    padding-left: 15px;
+    padding-right: 12px;
+    color: @fg_apple;
+}
+
+#workspaces {
+    background: transparent;
+    padding: 0 4px;
+}
+
+#workspaces button {
+    padding: 0 8px;
+    color: rgba(255, 255, 255, 0.4);
+    transition: all 0.2s ease;
+}
+
+#workspaces button.active {
+    color: #ffffff;
+}
+
+#workspaces button.urgent {
+    color: #ff5555;
+}
+
+#taskbar button {
+    padding: 0 6px;
+    margin: 4px 2px;
+    border-radius: 4px;
+}
+
+#taskbar button.active {
+    background: rgba(255, 255, 255, 0.1);
+}
+
+#clock, #custom-khorshididate, #custom-weather, #network, #pulseaudio, #battery, #tray, #custom-notification, #custom-twingate, #custom-alexa {
+    padding: 0 10px;
+}
+
+#clock {
+    font-weight: 700;
+    padding-right: 15px;
+}
+
+#battery.warning { color: #ffb86c; }
+#battery.critical { color: #ff5555; }
+#battery.charging { color: #50fa7b; }
+
+tooltip {
+    background: rgba(30, 30, 30, 0.9);
+    border-radius: 8px;
+    border: 1px solid @border_apple;
+}
+
+tooltip label {
+    padding: 6px;
+    color: @fg_apple;
+}

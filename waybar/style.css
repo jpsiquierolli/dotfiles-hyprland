@@ -1,9 +1,9 @@
-/* macOS default dark colours */
+/* Cores Base macOS Dark */
 @define-color bg_apple rgba(30, 30, 30, 0.6); 
 @define-color fg_apple #f8f8f2;
 @define-color border_apple rgba(255, 255, 255, 0.1);
 
-/* Dracula Colors for Alerts */
+/* Dracula Colors para Alertas */
 @define-color red    #ff5555;
 @define-color orange #ffb86c;
 @define-color green  #50fa7b;
@@ -22,7 +22,7 @@ window#waybar {
     border-bottom: 1px solid @border_apple;
 }
 
-/* Worspace pill style */
+/* Container do Workspaces estilo macOS Pills */
 #workspaces {
     background: rgba(255, 255, 255, 0.08);
     margin: 5px 4px;
@@ -47,7 +47,7 @@ window#waybar {
     background: rgba(255, 255, 255, 0.1);
 }
 
-/* Defaults */
+/* Estilo geral para todos os módulos */
 #clock, #custom-khorshididate, #custom-weather, #wlr-taskbar, 
 #cpu, #memory, #battery, #pulseaudio, #network, #tray, 
 #temperature, #power-profiles-daemon, #custom-twingate, 
@@ -56,12 +56,12 @@ window#waybar {
     margin: 0;
 }
 
-/* Clock Font */
+/* Relógio em negrito como no macOS */
 #clock {
     font-weight: 700;
 }
 
-/* Battery alert */
+/* Alertas de Bateria */
 #battery.warning { color: @orange; }
 #battery.critical { color: @red; }
 #battery.charging { color: @green; }
@@ -89,8 +89,8 @@ tooltip label {
 }
 
 #custom-remmina {
-    font-size: 24px;       
-    color: #00a4ef;        
+    font-size: 24px;       /* Aumente este número conforme o seu gosto (estava provavelmente em 16 ou 18) */
+    color: #00a4ef;        /* Azul clássico do Windows */
     padding-left: 10px;
     padding-right: 10px;
     margin-left: 5px;
@@ -98,18 +98,19 @@ tooltip label {
     background-color: transparent;
 }
 
-/* Clickable effect */
+/* Opcional: Efeito ao passar o mouse para saber que é clicável */
 #custom-remmina:hover {
     color: #ffffff;
     background-color: rgba(255, 255, 255, 0.1);
     border-radius: 8px;
 }
 
-/* Remmina workspace blue windows icon */
+/* Cor azul para o ícone do Windows na lista de workspaces */
 #workspaces button.9 {
-    font-size: 18px; 
+    font-size: 18px; /* Um pouco maior para destacar */
 }
 
+/* Mantém o ícone central azul quando visível */
 #custom-remmina {
     font-size: 24px;
     color: #00a4ef;
@@ -117,7 +118,7 @@ tooltip label {
 }
 
 #custom-power-menu {
-    color: #ff5e57; 
+    color: #ff5e57; /* Cor vermelha estilo botões da Apple */
     padding: 0 10px;
     font-size: 18px;
 }

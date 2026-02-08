@@ -58,7 +58,8 @@
   ],
   "widget-config": {
     "notifications": {
-      "vexpand": true
+      "vexpand": true,
+      "max-line-count": 5
     },
     "inhibitors": {
       "text": "Inhibitors",
@@ -87,7 +88,7 @@
       "buttons-per-row": 7,
       "actions": [
         {
-          "label": "直",
+          "label": "直",
           "type": "toggle",
           "active": true,
           "command": "sh -c '[[ $SWAYNC_TOGGLE_STATE == true ]] && nmcli radio wifi on || nmcli radio wifi off'",

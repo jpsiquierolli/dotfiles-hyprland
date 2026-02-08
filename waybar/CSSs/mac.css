@@ -1,0 +1,222 @@
+/* Colors (dracula - preserved from your original file) */
+@define-color foreground	#f8f8f2;
+@define-color background	rgba(40, 42, 54, 1);
+@define-color orange	#ffb86c;
+@define-color gray	#44475a; /* Using this for bar background */
+@define-color black #21222c;
+@define-color red	#ff5555;
+@define-color green	#50fa7b;
+@define-color yellow	#f1fa8c;
+@define-color cyan	#8be9fd;
+@define-color blue	#6272a4;
+@define-color purple	#bd93f9;
+@define-color pink	#ff79c6;
+@define-color white #ffffff;
+@define-color brred #ff6e6e;
+@define-color brgreen #69ff94;
+@define-color bryellow #ffffa5;
+@define-color brcyan #a4ffff;
+@define-color brblue #6272a4;
+@define-color brpurple #d6acff;
+@define-color brpink #ff92df;
+
+@define-color arch_blue #89b4fa;
+
+@define-color workspace_background	transparent;
+@define-color workspace_button	@foreground;
+@define-color workspace_active	@black;
+@define-color workspace_active_background	@cyan; /* Lighter color for active workspace */
+@define-color workspace_urgent	@white;
+@define-color workspace_urgent_background	@brred;
+@define-color workspace_hover	@black;
+@define-color workspace_hover_background	@cyan;
+@define-color critical	@orange;
+@define-color warning	@yellow;
+
+
+@keyframes blink {
+    to {
+        background-color: @white;
+        color: @black;
+    }
+}
+
+* {
+    border: none;
+    border-radius: 0;
+    font-family: "SF Pro Display", "JetBrainsMono Nerd Font", "Noto Sans", sans-serif;
+    font-weight: bold;
+    font-size: 14px; 
+    min-height: 0;
+}
+
+window#waybar {
+    background: transparent;
+    color: @foreground;
+    font-family: "SF Pro Display", "JetBrainsMono Nerd Font", "Noto Sans", sans-serif;
+    border-radius: 0; 
+    background-color: transparent;
+}
+
+window#waybar.hidden {
+	opacity: 0.2;
+}
+
+/* --- Workspaces (Center) --- */
+#workspaces {
+    background: transparent;
+    opacity: 1;
+    padding: 0px 5px; 
+    border-radius: 5px;
+}
+
+#workspaces button, #workspaces button.persistent {
+    background: transparent;
+    color: @workspace_button;
+    padding: 0 8px;
+    margin: 0 2px;
+    border-radius: 5px;
+    transition: all 0.2s ease-in-out;
+}
+
+#workspaces button.active {
+    /* Use a very subtle rounded background for the active workspace */
+    background: rgba(139, 233, 253, 0.2); 
+    color: @foreground; /* Keep color light for contrast */
+}
+
+#workspaces button.urgent {
+    background: @workspace_urgent_background;
+    color: @workspace_urgent;
+}
+
+#workspaces button:hover {
+    background: rgba(139, 233, 253, 0.1);
+    color: @foreground;
+}
+
+/* --- Taskbar (Left) --- */
+#wlr-taskbar {
+    background: transparent;
+    margin: 0px 0px 0px 10px;
+    padding-right: 10px;
+}
+
+/* --- Tooltip --- */
+tooltip {
+    background: @black; 
+    opacity: 0.95;
+    border-radius: 8px; 
+    border-width: 1px;
+    border-style: solid;
+    border-color: @purple;
+}
+
+tooltip label{
+    color: @foreground;
+}
+
+/* --- All Individual Modules (Tahoe 'Button' Look) --- */
+#custom-rofi,
+#custom-lock_screen,
+#custom-power,
+#custom-weather,
+#custom-khorshididate,
+#cpu,
+#disk,
+#custom-updates,
+#memory,
+#clock,
+#battery,
+#pulseaudio,
+#network,
+#tray,
+#temperature,
+#backlight,
+#language,
+#power-profiles-daemon {
+    /* Give all modules a tiny, subtle rounded background to look like a Mac button */
+    background: rgba(0, 0, 0, 0.05); 
+    opacity: 1;
+    padding: 0px 10px; /* Slightly more horizontal padding for spacing */
+    margin: 0px 3px; /* Add small margin between modules */
+    border-radius: 8px; /* Rounded corners for the 'button' effect */
+}
+
+/* Clock - Centerpiece */
+#clock {
+    background: rgba(0, 0, 0, 0.1); /* Slightly darker background to highlight the center */
+    padding: 0px 15px; 
+    font-weight: 500; /* Regular weight for time */
+    border-radius: 8px;
+}
+
+/* Right side system tray is not a button, so it remains transparent */
+#tray {
+    background: transparent;
+    margin: 0 10px;
+}
+#tray > .item {
+    padding: 0 3px;
+    border-radius: 5px;
+    background: rgba(0, 0, 0, 0.05); 
+}
+
+
+/* Highlight Critical/Warning States (Keep original styling) */
+#battery.warning:not(.charging),
+#temperature.warning {
+    color: @black;
+    background-color: @warning;
+    border-radius: 5px;
+    animation-name: blink;
+    animation-duration: 0.5s;
+    animation-timing-function: linear;
+    animation-iteration-count: infinite;
+    animation-direction: alternate;
+}
+
+#battery.critical:not(.charging),
+#temperature.critical {
+    color: @white;
+    background-color: @critical;
+    border-radius: 5px;
+    animation-name: blink;
+    animation-duration: 0.5s;
+    animation-timing-function: linear;
+    animation-iteration-count: infinite;
+    animation-direction: alternate;
+}
+
+/* Special Module Icons/Colors for quick glance */
+#battery {
+    color: @green;
+}
+
+#custom-power {
+    color: @red;
+}
+
+#pulseaudio {
+   color: @cyan;
+}
+
+#pulseaudio.microphone {
+  color: @purple;
+}
+
+#custom-weather {
+    color: @orange;
+}
+
+#network {
+    color: @blue;
+}
+
+#temperature {
+    color: @yellow;
+}
+
+#cpu, #memory, #custom-khorshididate, #language, #power-profiles-daemon {
+    color: @foreground;
+}

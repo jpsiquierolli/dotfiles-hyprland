@@ -1,0 +1,194 @@
+{
+    "layer": "top",
+    "position": "top",
+    "mod": "dock",
+    "exclusive": true,
+    "passthrough": false,
+    "gtk-layer-shell": true,
+    "height": 38,
+    "margin-top": 0,
+    "margin-left": 0,
+    "margin-right": 0,
+
+    "modules-left": [
+        "clock",
+	"custom/khorshididate",
+        "custom/weather",
+        "wlr/taskbar",
+        "power-profiles-daemon",
+        "custom/twingate",
+	"custom/alexa",
+	"battery"
+    ],
+
+    "modules-center": [
+	"hyprland/workspaces",
+	"custom/remmina"
+    ],
+
+    "modules-right": [
+        "tray",
+        "network",
+        "pulseaudio",
+        "mouse_battery",
+        "temperature",
+        "cpu",
+        "memory",
+        "custom/notification",
+	"custom/power-menu"
+   ],
+
+    "hyprland/workspaces": {
+    "on-click": "activate",
+    "disable-scroll": true,
+    "all-outputs": true,
+    "show-special": true,
+    "format": "{icon}",
+    "format-icons": {
+        "1": "1",
+	"2": "2",
+	"3": "3",
+	"4": "4",
+	"5": "5",
+	"6": "6",
+	"7": "7",
+	"8": "8",
+	"9": "󰖳"
+    }
+    },
+
+
+    "wlr/taskbar": {
+        "format": "{icon}",
+        "icon-size": 18,
+        "all-outputs": true,
+        "tooltip-format": "{name}: {title}",
+        "on-click": "activate",
+        "on-click-middle": "close"
+    },
+
+    "tray": {
+        "icon-size": 16,
+        "spacing": 10
+    },
+
+    "clock": {
+        "timezone": "America/Sao_Paulo",
+        "format": "{:%H:%M}",
+        "tooltip": true,
+        "tooltip-format": "{:%A, %B %d %Y}"
+    },
+
+    "custom/khorshididate": { 
+        "tooltip" : true,
+        "format": " {alt}",
+        "format-alt": " {alt}",
+        "interval": 3600,
+        "exec": "~/.config/waybar/scripts/khorshidi-date",
+        "return-type" : "json"
+    },
+
+    "custom/weather": {
+        "tooltip" : true,
+        "format" : "{}",
+        "interval" : 3600,
+        "exec" : "~/.config/waybar/scripts/wttr.py",
+        "return-type" : "json"
+    },
+
+    "cpu": {
+        "interval": 10,
+        "format": " {usage}%"
+    },
+
+    "memory": {
+        "interval": 30,
+        "format": "󰐟 {used:0.1f}GB"
+    },
+
+    "temperature": {
+        "critical-threshold": 80,
+        "format": "{icon} {temperatureC}°C",
+        "format-icons": ["", "", ""]
+    },
+
+    "battery": {
+        "states": { "good": 95, "warning": 30, "critical": 20 },
+        "format": "{icon} {capacity}%",
+        "format-charging": " {capacity}%",
+        "format-icons": ["", "", "", "", ""]
+    },
+
+    "custom/mouse_battery": {
+    "exec": "upower -i /org/freedesktop/UPower/devices/battery_hidpp_battery_2 | grep percentage | awk '{print $2}'",
+    "interval": 60,
+    "format": "󰍽 {}",
+    "tooltip": false
+},
+
+    "pulseaudio": {
+        "format": "{icon} {volume}%",
+        "format-muted": "",
+        "on-click": "pavucontrol",
+        "format-icons": {
+            "headset": "󰋋",
+            "default": ["", "󰖀", "󰕾"]
+        }
+    },
+
+    "network": {
+        "format-wifi": " ",
+        "format-ethernet": "",
+        "format-disconnected": "",
+        "on-click": "kitty -e nmtui connect"
+    },
+
+    "power-profiles-daemon": {
+        "format": "{icon}",
+        "on-click": "~/.config/waybar/scripts/cycle_power.sh",
+        "format-icons": {
+            "power-saver": "󰌪",
+            "balanced": "󰗑",
+            "performance": "󰓅"
+        }
+    },
+
+    "custom/twingate": {
+        "format": "󰖂 {icon}",
+        "return-type": "json",
+        "interval": 5,
+        "exec": "~/.config/waybar/scripts/twingate_status.py",
+        "on-click": "~/.config/waybar/scripts/twingate_toggle.sh",
+        "format-icons": { "connected": "on", "disconnected": "off" }
+    },
+
+    "custom/alexa": {
+        "format": "󰓃",
+        "on-click": "~/.config/waybar/scripts/alexa-audio.sh",
+	"on-click-right": "bluetoothctl disconnect 1C:FE:2B:D3:F5:5E "
+    },
+
+    "custom/notification": {
+        "tooltip": false,
+        "format": "{icon}",
+        "format-icons": {
+            "notification": "󱅫",
+            "none": "󰂜",
+            "dnd-notification": "󰂠",
+            "dnd-none": "󰪓"
+        },
+        "return-type": "json",
+        "exec-if": "which swaync-client",
+        "exec": "swaync-client -swb",
+        "on-click": "swaync-client -t -sw",
+        "escape": true
+    },
+
+    "custom/remmina": {
+    "format": "{}",
+    "interval": 2,
+    "exec": "hyprctl clients | grep -i org.remmina.Remmina > /dev/null && echo '' || echo '󰖳'",
+    "on-click": "~/.config/waybar/scripts/toggle_windows.sh"
+    }
+
+}

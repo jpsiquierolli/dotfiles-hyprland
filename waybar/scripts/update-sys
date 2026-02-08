@@ -1,0 +1,29 @@
+#!/usr/bin/env bash
+
+# Ação de clique para atualizar
+if [ "$1" = "update" ]; then
+    # Abre o terminal 'foot' (como no script original) para rodar a atualização
+    kitty dnf update --exclude=akmod-nvidia*    
+    # Envia um sinal para o Waybar se atualizar após a conclusão
+    pkill -SIGRTMIN+8 waybar
+    exit 0
+fi
+
+# Obtém a contagem de atualizações pendentes
+# -q para modo silencioso, -y para aceitar chaves GPG se necessário
+COUNT=$(dnf check-update -qy | wc -l)
+
+# Obtém o total de pacotes instalados
+ALL=$(rpm -qa | wc -l)
+
+# Define os ícones (agora que você usa Nerd Font)
+ICON_OK=""     # Ícone de "lixeira" ou "limpo" do script original
+ICON_UPDATES="" # Ícone de "download" / "atualização" do script original
+
+if [ "$COUNT" -eq 0 ]; then
+    # Sem atualizações
+    printf '{"text": "%s", "tooltip": "%s"}\n' "$ICON_OK $ALL" "$ICON_OK $ALL pacotes. Tudo atualizado."
+else
+    # Atualizações disponíveis
+    printf '{"text": "%s", "tooltip": "%s"}\n' "$ICON_UPDATES $COUNT" "$ICON_UPDATES $COUNT de $ICON_OK $ALL pacotes precisam ser atualizados."
+fi

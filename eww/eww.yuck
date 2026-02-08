@@ -1,0 +1,65 @@
+;; Variáveis para buscar informações do sistema
+(defpoll current-volume :interval "1s" "pamixer --get-volume")
+(defpoll current-brightness :interval "1s" "brightnessctl -m | cut -d, -f4 | tr -d '%'")
+(defpoll net-name :interval "10s" "nmcli -t -f active,ssid dev wifi | grep '^yes' | cut -d: -f2")
+
+(defwidget control_center []
+  (box :orientation "v" :space-evenly false :class "main-container"
+    
+    ;; Top Row: Conectividade e Media
+    (box :class "top-row" :spacing 12 :space-evenly true
+      ;; Grid de Conexões
+      (box :class "card connectivity" :orientation "v" :spacing 15 :space-evenly false
+        (box :space-evenly false :spacing 12
+          (button :class "icon-blue" :onclick "nm-connection-editor" "󰖩")
+          (box :orientation "v" 
+            (label :class "label-big" :text "Wi-Fi" :halign "start") 
+            (label :class "label-small" :text "${net-name}" :halign "start" :limit-width 10)))
+        (box :space-evenly false :spacing 12
+          (button :class "icon-blue" :onclick "blueman-manager" "󰂯")
+          (box :orientation "v" (label :class "label-big" :text "Bluetooth" :halign "start")))
+        (box :space-evenly false :spacing 12
+          (button :class "icon-blue" "󰀉")
+          (box :orientation "v" (label :class "label-big" :text "AirDrop" :halign "start"))))
+      
+      ;; Player de Música (Media)
+      (box :class "card media" :orientation "v" :space-evenly false
+        (box :class "album-art" :style "background-image: url('/home/jpsiquierolli/Pictures/cover.png');")
+        (label :class "song-title" :text "Besties" :limit-width 15 :halign "center")
+        (label :class "artist-name" :text "Black Country, New..." :limit-width 20 :halign "center")
+        (box :class "media-controls" :spacing 15 :halign "center"
+          (button "󰒮") (button "󰐊") (button "󰒭"))))
+
+    ;; Middle Row: Foco e Espelhamento
+    (box :class "mid-row" :spacing 12 :space-evenly true
+      (box :class "card focus" :space-evenly false :spacing 12
+        (button :class "icon-gray" "󰖔") (label :text "Focus" :class "label-big"))
+      (box :spacing 12
+        (box :class "card small-icon" :hexpand true (button "󰍹"))
+        (box :class "card small-icon" :hexpand true (button "󰕟"))))
+
+    ;; Sliders: Brilho e Som
+    (box :class "card slider-card" :orientation "v" :spacing 15
+      (box :space-evenly false :spacing 15
+        (label :class "slider-icon" :text "󰃠")
+        (scale :min 0 :max 101 :value current-brightness :onchange "brightnessctl s {}%"))
+      (box :space-evenly false :spacing 15
+        (label :class "slider-icon" :text "󰕾")
+        (scale :min 0 :max 101 :value current-volume :onchange "pamixer --set-volume {}")))
+
+    ;; Bottom Row: Atalhos de Sistema
+    (box :class "bottom-row" :spacing 12 :halign "center"
+      (button :class "circle-btn" "󰔎")
+      (button :class "circle-btn" "󰪚")
+      (button :class "circle-btn" "󰔛")
+      (button :class "circle-btn" "󰄀"))
+
+    (button :class "edit-btn" :onclick "eww close center" "Edit Controls")))
+
+(defwindow center
+  :monitor 0
+  :stacking "fg"
+  :namespace "eww"
+  :focusable true
+  :geometry (geometry :x "15px" :y "55px" :width "360px" :height "600px" :anchor "top right")
+  (control_center))

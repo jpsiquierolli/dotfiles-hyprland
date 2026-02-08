@@ -30,14 +30,14 @@
 @define-color noti-bg rgba(40, 40, 40, 0.85);
 @define-color noti-bg-opaque rgb(40, 40, 40);
 @define-color noti-bg-darker rgb(30, 30, 30);
-@define-color noti-bg-hover rgb(60, 60, 60);
-@define-color noti-bg-hover-opaque rgb(60, 60, 60);
-@define-color noti-bg-focus rgba(80, 80, 80, 0.6);
+@define-color noti-bg-hover rgb(56, 56, 56);
+@define-color noti-bg-hover-opaque rgb(56, 56, 56);
+@define-color noti-bg-focus rgba(68, 68, 68, 0.6);
 @define-color noti-close-bg rgba(255, 255, 255, 0.1);
 @define-color noti-close-bg-hover rgba(255, 255, 255, 0.15);
 @define-color text-color rgb(255, 255, 255);
-@define-color text-color-disabled rgb(160, 160, 160);
-@define-color bg-selected rgb(0, 120, 215);
+@define-color text-color-disabled rgb(150, 150, 150);
+@define-color bg-selected rgb(0, 128, 255);
 
 notificationwindow, blankwindow {
   background: transparent;
@@ -53,8 +53,8 @@ notificationwindow, blankwindow {
   margin-right: 10px;
   box-shadow: none;
   border: none;
-  min-width: 22px;
-  min-height: 22px;
+  min-width: 24px;
+  min-height: 24px;
 }
 
 .close-button:hover {
@@ -74,7 +74,7 @@ notificationwindow, blankwindow {
 }
 
 .notification-row .notification-background {
-  padding: 8px 12px;
+  padding: 6px 12px;
 }
 
 .notification-row .notification-background .notification {
@@ -83,7 +83,7 @@ notificationwindow, blankwindow {
   padding: 0;
   transition: var(--hover-tranistion);
   background: rgba(var(--noti-bg), var(--noti-bg-alpha));
-  max-width: 350px;
+  max-width: 380px;
   box-shadow: var(--notification-shadow);
 }
 
@@ -96,7 +96,7 @@ notificationwindow, blankwindow {
   color: var(--text-color);
   transition: var(--hover-tranistion);
   border-radius: var(--border-radius);
-  max-height: 110px;
+  max-height: 180px;
   overflow: hidden;
 }
 
@@ -133,7 +133,7 @@ notificationwindow, blankwindow {
   color: rgba(255, 255, 255, 0.85);
   text-shadow: none;
   display: -webkit-box;
-  -webkit-line-clamp: 2;
+  -webkit-line-clamp: 5;
   -webkit-box-orient: vertical;
   overflow: hidden;
 }

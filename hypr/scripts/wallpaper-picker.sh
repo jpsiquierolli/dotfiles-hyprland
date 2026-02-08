@@ -1,14 +1,15 @@
 #!/bin/bash
 
+# Caminho atualizado
 WALLPAPER_DIR="/apl/hyprland/wallpapers"
 
-# swww-daemon is running 
+# Garante que o swww-daemon está rodando
 if ! pgrep -x "swww-daemon" > /dev/null; then
     swww-daemon &
     sleep 0.5 # espera o daemon iniciar
 fi
 
-# List files
+# Lista os arquivos
 PICS=$(ls "$WALLPAPER_DIR" | grep -E ".jpg$|.jpeg$|.png$|.webp$")
 
 # Se a lista estiver vazia, avisa (bom para debug)
@@ -17,7 +18,7 @@ if [ -z "$PICS" ]; then
     exit 1
 fi
 
-# Clear cache and force use my style.css 
+# Forçamos o uso do seu style.css e limpamos o cache para garantir o visual novo
 SELECT=$(echo -e "$PICS" | wofi --show dmenu --style "$HOME/.config/wofi/style.css" --prompt "Wallpapers:" --conf /dev/null --cache-file /dev/null)
 
 if [ -n "$SELECT" ]; then

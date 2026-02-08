@@ -1,7 +1,7 @@
  #!/bin/bash
 
 
-# Window class for remmina
+# Classe da janela do Remmina que o Hyprland identifica
 
 WINDOW_CLASS="org.remmina.Remmina"
 
@@ -15,19 +15,19 @@ then
     killall remmina
     pkill -f "remmina"
 
-    # After closing goes to workspace 1 
+    # Opcional: volta para o workspace 1 ao fechar
 
     hyprctl dispatch workspace 1
 
 else
 
-    # Opens connection (if not connected)
+    # Se não existe, abre a conexão
 
     remmina -c ~/.local/share/remmina/group_rdp_trabalho_192-168-100-154-3389.remmina &
 
     
 
-    # goes to workspace 9
+    # Aguarda a janela aparecer e pula para o workspace 9
 
     sleep 2
 
