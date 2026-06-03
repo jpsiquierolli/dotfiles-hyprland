@@ -1,56 +1,54 @@
 window {
-    /* Main Window Frame (Opaque, Light Background) */
     margin: 0px;
-    border: 0px; 
-    border-radius: 18px; 
-    /* High opacity (0.70) light background - almost solid white */
-    background-color: rgba(240, 240, 240, 0.70); 
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 16px;
+    /* Dark background like macOS / Zen */
+    background-color: rgba(20, 20, 20, 0.9);
+    font-family: "SF Pro Display", "Inter", sans-serif;
 }
 
 #input {
-    /* Search Bar (Opaque, White Background) */
-    margin: 12px; 
-    padding: 8px;
+    margin: 15px;
+    padding: 10px;
     border: none;
-    border-radius: 12px; 
-    color: #1c1c1c; /* Dark text */
-    /* Fully opaque white background for best visibility */
-    background-color: rgba(255, 255, 255, 1.0); 
-    font-size: 14pt;
+    border-radius: 10px;
+    color: white;
+    /* Slightly lighter dark for the input box */
+    background-color: rgba(255, 255, 255, 0.05);
+    font-size: 18px;
 }
 
-#entry {
-    /* Single Entry Item */
-    padding: 8px 15px;
-    border-radius: 10px; 
-    background-color: transparent;
+#inner-box {
+    margin: 5px;
+}
+
+#outer-box {
+    margin: 5px;
+}
+
+#scroll {
+    margin: 5px;
 }
 
 #text {
-    /* Default Text/Entry Text */
-    margin: 2px;
-    padding: 2px;
-    border: none;
-    color: #1c1c1c; /* Dark text */
-} 
+    padding: 5px;
+    color: #e0e0e0;
+    font-size: 14px;
+}
+
+#entry {
+    padding: 10px;
+    margin: 2px 10px;
+    border-radius: 8px;
+    background-color: transparent;
+}
 
 #entry:selected {
-    /* Selected Entry (Opaque, Light Gray Selection) */
-    /* Very clear, light gray selection background */
-    background-color: rgba(224, 224, 224, 1.0); 
-    border: none;
+    /* macOS-style blue or subtle gray selection */
+    background-color: rgba(255, 255, 255, 0.1);
 }
 
 #entry:selected #text {
-    /* Text on Selected Entry */
+    color: white;
     font-weight: bold;
-    color: #1c1c1c; /* Dark text when selected */
-}
-
-/* Containers remain transparent */
-#inner-box, #outer-box, #scroll {
-    margin: 0px;
-    padding: 0px;
-    border: none;
-    background-color: transparent;
 }

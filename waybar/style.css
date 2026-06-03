@@ -38,8 +38,14 @@ window#waybar {
 }
 
 #workspaces button.active {
-    background: rgba(255, 255, 255, 0.15);
-    color: #ffffff;
+    background: rgba(173, 216, 230, 1);
+    color: #000000;
+    box-shadow: 0 1px 2px rgba(0,0,0,0.2);
+}
+
+#workspaces button.urgent {
+    background: #f38ba8;
+    color: #000000;
     box-shadow: 0 1px 2px rgba(0,0,0,0.2);
 }
 
@@ -121,4 +127,28 @@ tooltip label {
     color: #ff5e57; /* Cor vermelha estilo botões da Apple */
     padding: 0 10px;
     font-size: 18px;
+}
+
+#custom-spotify {
+    padding: 0 10px;
+}
+
+#custom-spotify.playing {
+    color: rgb(29, 185, 84);
+}
+
+#custom-spotify.paused {
+    color: rgb(150, 150, 150);
+}
+
+tooltip {
+    background-color: rgb(30, 30, 46);
+    border: 1px solid rgb(29, 185, 84);
+    border-radius: 10px;
+}
+
+tooltip label {
+    color: rgb(205, 214, 244);
+    text-shadow: none;
+    padding: 10px;
 }
