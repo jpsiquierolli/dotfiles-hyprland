@@ -17,7 +17,7 @@ then
 
 else
 
-    remmina -c ~/.local/share/remmina/group_rdp_trabalho_pessoal-jp-windows.remmina &
+    remmina -c ~/.local/share/remmina/.remmina &
 
     hyprctl dispatch workspace 9
 

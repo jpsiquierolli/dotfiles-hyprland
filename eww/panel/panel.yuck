@@ -1,0 +1,51 @@
+(include "./panel/src/bluetooth.yuck")
+(include "./panel/src/daemon.yuck")
+(include "./panel/src/network.yuck")
+(include "./panel/src/quicktoggle.yuck")
+(include "./panel/src/sliders.yuck")
+(include "./panel/src/dnd.yuck")
+
+(defwidget widget_panel []
+  (box :class "panel-card"
+       :orientation "vertical"
+       :space-evenly false
+       :spacing 16
+       (box :orientation "horizontal"
+            :space-evenly true
+            :spacing 16
+
+            ;; --- LEFT SIDE ---
+            (box :class "left-box"
+                 :orientation "vertical"
+                 :space-evenly false
+                 :spacing 14
+                 (widget_wifi)
+                 (widget_bluetooth)
+                 (widget_daemon))
+
+            ;; --- RIGHT SIDE ---
+            (box :orientation "vertical"
+                 :space-evenly false
+                 :spacing 12
+                 
+                 ;; Notifications
+                 (box :class "dnd-card"
+                      :orientation "vertical"
+                      :space-evenly true
+                      (widget_dnd))
+
+                 ;; Quick Toggles (SSH / Windows)
+                 (box :class "sub-right-box"
+                      :orientation "horizontal"
+                      :space-evenly true
+                      (widget_quicktoggle))
+            )
+       )
+
+       ;; --- BOTTOM SLIDERS ---
+       (box :orientation "vertical"
+            :space-evenly false
+            :spacing 16
+            (widget_sliders))
+  )
+)

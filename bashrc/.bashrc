@@ -1,6 +1,7 @@
 #!/usr/bin/env bash
 
 #### My alias
+alias windows="sudo bootctl set-oneshot auto-windows && systemctl reboot"
 alias off='poweroff'
 
 iatest=$(expr index "$-" i)

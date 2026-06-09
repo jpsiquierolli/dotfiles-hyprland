@@ -1,0 +1,53 @@
+(defpoll power_profile :interval "999m" "powerprofilesctl get")
+(defpoll kbd_light :interval "1s" "bash ~/.config/eww/panel/scripts/kbd_light.sh status")
+
+(defwidget widget_daemon []
+  (box :orientation "vertical"
+       :space-evenly false
+       :spacing 14
+
+       ;; --- Power Mode ---
+       (box :class "daemon-card ${power_profile}"
+            :orientation "horizontal"
+            :space-evenly false
+            (eventbox :cursor "pointer"
+                      :hexpand true
+                      (button :class "left-action"
+                              :onclick "bash ~/.config/eww/panel/scripts/daemon_toggle.sh &"
+                              (box :orientation "horizontal"
+                                   :space-evenly false
+                                   :spacing 14
+                                   :valign "center"
+                                   (label :class "daemon-icon"
+                                          :text {power_profile == "performance" ? "" :
+                                                 power_profile == "power-saver" ? "" : "󰶘"})
+                                   (box :orientation "vertical"
+                                        :space-evenly false
+                                        :spacing 2
+                                        :valign "center"
+                                        (label :class "title" :text "Power Mode")
+                                        (label :class "mode" :text {power_profile == "performance" ? "Performance" :
+                                                                   power_profile == "power-saver" ? "Power Saver" : "Balanced"}))))))
+
+       ;; --- Keyboard Light ---
+       (box :class "daemon-card kbd-${kbd_light}"
+            :orientation "horizontal"
+            :space-evenly false
+            (eventbox :cursor "pointer"
+                      :hexpand true
+                      (button :class "left-action"
+                              :onclick "bash ~/.config/eww/panel/scripts/kbd_light.sh toggle &"
+                              (box :orientation "horizontal"
+                                   :space-evenly false
+                                   :spacing 14
+                                   :valign "center"
+                                   (label :class "daemon-icon"
+                                          :text {kbd_light == "on" ? "󰌌" : "󰌶"})
+                                   (box :orientation "vertical"
+                                        :space-evenly false
+                                        :spacing 2
+                                        :valign "center"
+                                        (label :class "title" :text "Keyboard")
+                                        (label :class "mode" :text {kbd_light == "on" ? "On" : "Off"}))))))
+  )
+)

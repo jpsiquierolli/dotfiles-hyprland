@@ -1,0 +1,63 @@
+;; Grab volume and brightness
+(defpoll current-volume :interval "1s" "pamixer --get-volume")
+(defpoll current-brightness :interval "1s" "brightnessctl -m | cut -d, -f4 | tr -d '%'")
+
+(defwidget widget_sliders []
+  (box :orientation "vertical"
+       :space-evenly false
+       :spacing 16
+       :class "sliders-container"
+
+       ;; --- Brightness Slider ---
+       (box :class "slider-wrapper"
+            :orientation "vertical"
+            :space-evenly false
+            :spacing 8
+
+            (label :class "slider-title"
+                   :text "Brightness"
+                   :halign "start")
+
+            (box :orientation "horizontal"
+                 :space-evenly false
+                 :spacing 12
+                 :hexpand true
+
+                 (label :class "slider-icon brightness"
+                        :text "󰖨")
+                 (scale :class "osd-scale brightness"
+                        :hexpand false
+                        :width 300
+                        :valign "center"
+                        :min 0
+                        :max 101
+                        :value current-brightness
+                        :onchange "brightnessctl s {}%")))
+
+       ;; --- Volume Slider ---
+       (box :class "slider-wrapper"
+            :orientation "vertical"
+            :space-evenly false
+            :spacing 8
+
+            (label :class "slider-title"
+                   :text "Volume"
+                   :halign "start")
+
+            (box :orientation "horizontal"
+                 :space-evenly false
+                 :spacing 12
+                 :hexpand true
+
+                 (label :class "slider-icon volume"
+                        :text "")
+                 (scale :class "osd-scale volume"
+                        :hexpand false
+                        :width 300
+                        :valign "center"
+                        :min 0
+                        :max 101
+                        :value current-volume
+                        :onchange "pamixer --set-volume $(printf '%.0f' {})")))
+  )
+)

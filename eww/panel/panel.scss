@@ -1,0 +1,57 @@
+@import "../theme/tokens.scss";
+
+.panel-wrapper {
+  background: transparent;
+}
+
+.panel-close-area {
+  background: transparent;
+  min-height: 20px;
+}
+
+.panel-card {
+  background-color: $glass;
+  border-radius: $rad;
+  padding: 14px;
+  min-width: 3px;
+
+  .left-box {
+    background-color: $base;
+    padding: 14px;
+    border-radius: $rad;
+  }
+
+  .dnd-card,
+  .sub-right-box {
+    background-color: $base;
+    padding: 20px 16px;
+    border-radius: $rad;
+  }
+}
+
+/* --- Small DND Toggle Styling --- */
+.dnd-toggle-btn {
+  background-color: $surface0;
+  border-radius: 12px;
+  min-width: 48px;
+  min-height: 48px;
+  color: $text;
+  transition: all 0.2s ease;
+}
+
+.dnd-toggle-btn:hover {
+  background-color: $surface1;
+}
+
+.dnd-icon-small {
+  font-size: 22px;
+}
+
+/* When DND is Active */
+.dnd-toggle-btn.dnd-on {
+  background-color: $red; 
+}
+
+.dnd-toggle-btn.dnd-on .dnd-icon-small {
+  color: $crust;
+}

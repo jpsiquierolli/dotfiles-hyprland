@@ -1,0 +1,29 @@
+(defpoll dnd_status :interval "1s" "swaync-client -D")
+
+(defwidget widget_dnd []
+  (box :orientation "horizontal"
+       :space-evenly false
+       :spacing 12
+
+       ;; --- Big Inbox Button ---
+       (eventbox :cursor "pointer"
+                 :hexpand true
+                 (button :class "dnd-button"
+                         :onclick "swaync-client -t -sw & ~/.config/eww/toggle_panel.sh &"
+                         (box :orientation "horizontal"
+                              :space-evenly false
+                              :spacing 12
+                              :halign "center"
+                              :valign "center"
+                              (label :class "dnd-icon" :text "󱅫"))))
+
+       ;; --- Small Compact Toggle ---
+       (eventbox :cursor "pointer"
+                 :halign "end"
+                 :valign "center"
+                 (button :class {dnd_status == "true" ? "dnd-toggle-btn dnd-on" : "dnd-toggle-btn"}
+                         :onclick "swaync-client -d -sw"
+                         (label :class "dnd-icon-small" 
+                                :text {dnd_status == "true" ? "󰂛" : "󰂚"})))
+  )
+)

@@ -1,0 +1,57 @@
+(defwidget widget_quicktoggle []
+  (box :class "qt-container"
+       :orientation "vertical"
+       :space-evenly false
+       :spacing 16
+
+       ;; --- TOP ROW: Prod & Backup ---
+       (box :orientation "horizontal"
+            :space-evenly true
+            :spacing 16
+
+            ;; SSH Prod (Fedora)
+            (eventbox :cursor "pointer"
+                      (button :class "qt-card screenshot"
+                              :onclick "ssh example@example &"
+                              (box :orientation "vertical"
+                                   :space-evenly false
+                                   :spacing 4
+                                   :valign "center"
+                                   (label :class "qt-card-icon" :text "󰒋")
+                                   (box :orientation "vertical"
+                                        :space-evenly false
+                                        (label :class "qt-card-label" :text "Fedora")
+                                        (label :class "qt-card-label subtitel" :text "Server")))))
+
+            ;; SSH Backup (Oracle)
+            (eventbox :cursor "pointer"
+                      (button :class "qt-card record"
+                              :onclick "ssh example@example &"
+                              (box :orientation "vertical"
+                                   :space-evenly false
+                                   :spacing 4
+                                   :valign "center"
+                                   (label :class "qt-card-icon" :text "󰆦")
+                                   (box :orientation "vertical"
+                                        :space-evenly false
+                                        (label :class "qt-card-label" :text "OL 10")
+                                        (label :class "qt-card-label subtitel" :text "Server")))))
+       )
+
+       ;; --- BOTTOM ROW: Windows RDP ---
+       (box :orientation "horizontal"
+            :space-evenly true
+            (eventbox :cursor "pointer"
+                      (button :class "qt-card screenshot"
+                              :onclick "~/.config/waybar/scripts/toggle_windows.sh & ~/.config/eww/toggle_panel.sh &"
+                              (box :orientation "vertical"
+                                   :space-evenly false
+                                   :spacing 4
+                                   :valign "center"
+                                   (label :class "qt-card-icon" :text "󰖳")
+                                   (box :orientation "vertical"
+                                        :space-evenly false
+                                        (label :class "qt-card-label" :text "Windows"))))) 
+       )
+  )
+)
