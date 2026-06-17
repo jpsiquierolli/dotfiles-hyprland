@@ -1,7 +1,11 @@
-hl.config({
+hl.config({                                                                                     
+  general = {
+      layout = "dwindle" -- This fixes the "unknown dwindle layout message" error!
+  },
+
   dwindle = {
       force_split                  = 0,
-      preserve_split               = false,
+      preserve_split               = true,
       smart_split                  = false,
       smart_resizing               = true,
       permanent_direction_override = false,
@@ -11,5 +15,13 @@ hl.config({
       default_split_ratio          = 1.0,
       split_bias                   = 0,
       precise_mouse_move           = false,
-  },
-})
+
+  }
+  })
+
+--master = {
+--      allow_small_split            = true,
+--      new_status                   = "master",
+--      preserve_split               = true
+--  }                                                                                           
+--})

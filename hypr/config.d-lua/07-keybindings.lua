@@ -29,7 +29,7 @@ hl.bind(mainMod .. " + T", hl.dsp.window.float({ action = "toggle" }))
 
 -- Execute apps
 hl.bind(mainMod .. " + Q", hl.dsp.exec_cmd(terminal))
-hl.bind(mainMod .. " + F", hl.dsp.exec_cmd("firefox"))
+hl.bind(mainMod .. " + B", hl.dsp.exec_cmd("firefox"))
 hl.bind(mainMod .. " + E", hl.dsp.exec_cmd(fileManager))
 hl.bind("ALT + SPACE", hl.dsp.exec_cmd(menu))
 hl.bind(mainMod .. " + SPACE", hl.dsp.exec_cmd(menu))
@@ -37,11 +37,28 @@ hl.bind(mainMod .. " + SPACE", hl.dsp.exec_cmd(menu))
 -- Clipboard Manager
 hl.bind(mainMod .. " + V", hl.dsp.exec_cmd("cliphist list | wofi --dmenu | cliphist decode | wl-copy"))
 
--- Move Focus
-hl.bind(mainMod .. " + left", hl.dsp.focus({ direction = "l" }))
-hl.bind(mainMod .. " + right", hl.dsp.focus({ direction = "r" }))
-hl.bind(mainMod .. " + up", hl.dsp.focus({ direction = "u" }))
-hl.bind(mainMod .. " + down", hl.dsp.focus({ direction = "d" }))
+-- Put screen in fullscreen
+hl.bind(mainMod .." + F", hl.dsp.window.fullscreen({mode = "fullscreen", action = "toggle"}))
+-- --------------------------------------------------------
+-- FOCUS BINDS: Move your cursor between windows (No SHIFT)
+-- --------------------------------------------------------
+hl.bind(mainMod .. " + j", hl.dsp.focus({ direction = "l" }))        -- Focus Left
+hl.bind(mainMod .. " + ccedilla", hl.dsp.focus({ direction = "r" })) -- Focus Right
+hl.bind(mainMod .. " + k", hl.dsp.focus({ direction = "u" }))        -- Focus Up
+hl.bind(mainMod .. " + l", hl.dsp.focus({ direction = "d" }))        -- Focus Down
+
+-- --------------------------------------------------------
+-- MOVE BINDS: Move windows around the grid (With SHIFT)
+-- --------------------------------------------------------
+hl.bind(mainMod .. " + SHIFT + j", hl.dsp.window.move({ direction = "l" }))
+hl.bind(mainMod .. " + SHIFT + ccedilla", hl.dsp.window.move({ direction = "r" }))
+
+-- --------------------------------------------------------
+-- SPLIT TOGGLE: i3 Style
+-- --------------------------------------------------------
+-- Press this to switch whether the next split is vertical or horizontal
+hl.bind(mainMod .. " + SHIFT + k", hl.dsp.layout("togglesplit"))
+hl.bind(mainMod .. " + SHIFT + l", hl.dsp.layout("togglesplit"))
 
 -- Switch workspaces
 for i = 1, 9 do
@@ -76,7 +93,7 @@ hl.bind("XF86MonBrightnessUp", hl.dsp.exec_cmd("brightnessctl -e4 -n2 set 5%+"),
 hl.bind("XF86MonBrightnessDown", hl.dsp.exec_cmd("brightnessctl -e4 -n2 set 5%-"), { repeating = true, locked = true })
 
 -- Lock Screen
-hl.bind(mainMod .. " + L", hl.dsp.exec_cmd("loginctl lock-session"))
+hl.bind(mainMod .. " + N", hl.dsp.exec_cmd("loginctl lock-session"))
 
 -- Wallpaper
 hl.bind(mainMod .. " + P", hl.dsp.exec_cmd("waypaper"))
